@@ -1,0 +1,61 @@
+{
+  "dataset": "D2_dunnhumby",
+  "cfg": {
+    "H": 60,
+    "delta": 28,
+    "K": 4,
+    "L": 3,
+    "min_history_days": 120,
+    "n_valid": 3,
+    "n_test": 3,
+    "min_train": 6,
+    "fold_step": 3,
+    "seed": 42,
+    "margin": 0.2,
+    "gamma": 0.3,
+    "cost": 1.0,
+    "budgets": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "prior_alpha": 50.0,
+    "max_cox_rows": 150000,
+    "n_estimators": 400,
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "tune_trials": 0,
+    "gmm_variant": true,
+    "calibration": "platt"
+  },
+  "stats": {
+    "customers": 2500,
+    "transactions": 2576882,
+    "orders": 275542,
+    "first": "2000-01-02",
+    "last": "2001-12-12",
+    "origins": 19,
+    "rows": 34363,
+    "churn_rate_rows": 0.02886825946512237,
+    "gap_p50": 2.0,
+    "gap_p90": 12.0,
+    "gap_p95": 20.0
+  },
+  "explain": {
+    "top3": {
+      "0": "recency, seg, last_gap",
+      "1": "recency, monetary, freq_recent",
+      "2": "monetary, recency, seg",
+      "3": "recency, monetary, seg"
+    },
+    "stability_mean": 0.9816632231404959,
+    "stability_min": 0.9504132231404959
+  },
+  "tests": {
+    "wilcoxon": [],
+    "bootstrap": {
+      "error": "\"['SMH-Churn'] not found in axis\""
+    }
+  },
+  "silhouette": 0.2544271838768454
+}

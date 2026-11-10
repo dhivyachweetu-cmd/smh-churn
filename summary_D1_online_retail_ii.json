@@ -1,0 +1,61 @@
+{
+  "dataset": "D1_online_retail_ii",
+  "cfg": {
+    "H": 90,
+    "delta": 30,
+    "K": 4,
+    "L": 3,
+    "min_history_days": 120,
+    "n_valid": 3,
+    "n_test": 3,
+    "min_train": 6,
+    "fold_step": 3,
+    "seed": 42,
+    "margin": 0.2,
+    "gamma": 0.3,
+    "cost": 1.0,
+    "budgets": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "prior_alpha": 50.0,
+    "max_cox_rows": 150000,
+    "n_estimators": 400,
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "tune_trials": 0,
+    "gmm_variant": true,
+    "calibration": "platt"
+  },
+  "stats": {
+    "customers": 5878,
+    "transactions": 805549,
+    "orders": 36969,
+    "first": "2009-12-01",
+    "last": "2011-12-09",
+    "origins": 18,
+    "rows": 18664,
+    "churn_rate_rows": 0.24367766823831977,
+    "gap_p50": 24.0,
+    "gap_p90": 134.0,
+    "gap_p95": 206.0
+  },
+  "explain": {
+    "top3": {
+      "0": "tenure, recency, period",
+      "1": "recency, tenure, period",
+      "2": "recency, tenure, frequency",
+      "3": "frequency, tenure, recency"
+    },
+    "stability_mean": 0.9932920536635708,
+    "stability_min": 0.9793601651186791
+  },
+  "tests": {
+    "wilcoxon": [],
+    "bootstrap": {
+      "error": "\"['SMH-Churn'] not found in axis\""
+    }
+  },
+  "silhouette": 0.29686512716553703
+}

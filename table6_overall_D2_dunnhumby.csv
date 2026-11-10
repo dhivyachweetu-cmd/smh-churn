@@ -1,0 +1,16 @@
+,AUC,AUC,PR_AUC,PR_AUC,Brier,Brier,ECE,ECE,Lift10,Lift10
+,mean,std,mean,std,mean,std,mean,std,mean,std
+model,,,,,,,,,,
+A1 No migration features,0.8559,,0.1045,,0.0142,,0.004,,5.4976,
+A2 No seg_prior,0.8513,,0.124,,0.014,,0.004,,5.2157,
+A3 SMH without calibration,0.846,,0.1231,,0.0142,,0.0071,,4.7928,
+A4 GMM segmenter,0.8551,,0.1201,,0.014,,0.0037,,5.4976,
+B1 Logistic regression,0.8473,,0.0966,,0.0142,,0.0039,,4.9338,
+B2 Random forest,0.8078,,0.0752,,0.0145,,0.0077,,4.5109,
+B3 LightGBM (static),0.844,,0.0849,,0.0143,,0.0053,,4.9338,
+B3p LightGBM (pooled snapshots),0.8441,,0.1025,,0.0142,,0.0037,,5.6386,
+B4 Cluster label + LightGBM,0.8401,,0.0827,,0.0144,,0.0062,,5.4976,
+B5 BG/NBD,0.7822,,0.0392,,0.015,,0.0109,,3.2422,
+B6 Cox time-varying,0.8423,,0.0776,,0.0145,,0.0051,,5.0747,
+B8 Hazard GBDT (no segments),0.8407,,0.1098,,0.0141,,0.0022,,5.3566,
+SMH-Churn,0.846,,0.1231,,0.0141,,0.0064,,4.7928,

@@ -1,0 +1,6 @@
+variant,dPR_AUC,dBrier,dVaR10,dRealCap10,p_wilcoxon
+B8 Hazard GBDT (no segments),-0.0133,-0.0001,-0.0023,-0.0067,1.0
+A1 No migration features,-0.0186,0.0001,0.0313,0.0,1.0
+A2 No seg_prior,0.001,-0.0001,-0.0308,-0.0218,1.0
+A3 SMH without calibration,0.0,0.0,-0.0165,0.0,
+A4 GMM segmenter,-0.0029,-0.0001,-0.0242,-0.0399,1.0
