@@ -1,0 +1,247 @@
+{
+  "dataset": "D2_v4",
+  "cfg": {
+    "H": 60,
+    "delta": 14,
+    "K": 4,
+    "L": 3,
+    "min_history_days": 120,
+    "n_valid": 3,
+    "n_test": 3,
+    "min_train": 6,
+    "fold_step": 2,
+    "seed": 42,
+    "margin": 0.2,
+    "gamma": 0.3,
+    "cost": 1.0,
+    "budgets": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "prior_alpha": 50.0,
+    "max_cox_rows": 150000,
+    "n_estimators": 400,
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "tune_trials": 0,
+    "gmm_variant": true,
+    "calibration": "platt",
+    "full_history_lag": true
+  },
+  "stats": {
+    "customers": 2500,
+    "transactions": 2576882,
+    "orders": 275542,
+    "first": "2000-01-02",
+    "last": "2001-12-12",
+    "origins": 38,
+    "rows": 65624,
+    "churn_rate_rows": 0.01622881872485676,
+    "gap_p50": 2.0,
+    "gap_p90": 12.0,
+    "gap_p95": 20.0
+  },
+  "explain": {
+    "top3": {
+      "0": "recency, avg_gap, freq_recent",
+      "1": "recency, freq_recent, n_items",
+      "2": "n_items, freq_recent, prev_seg",
+      "3": "freq_recent, n_items, prev_seg"
+    },
+    "stability_mean": 0.9966460268317854,
+    "stability_min": 0.9876160990712075
+  },
+  "tests": {
+    "friedman": {
+      "chi2": 41.824242424242414,
+      "p": 3.5387927655678668e-06,
+      "df": 9,
+      "mean_ranks": {
+        "B8 Hazard GBDT (no segments)": 2.11,
+        "SMH-Churn": 2.89,
+        "B3p LightGBM (pooled snapshots)": 4.0,
+        "B9 Hazard + trajectory (no segments)": 4.44,
+        "SMH-Churn+ (trajectory + migration)": 4.56,
+        "B4 Cluster label + LightGBM": 6.56,
+        "B3 LightGBM (static)": 6.78,
+        "B2 Random forest": 7.56,
+        "B1 Logistic regression": 8.0,
+        "B6 Cox time-varying": 8.11
+      }
+    },
+    "wilcoxon": [
+      {
+        "vs": "B1 Logistic regression",
+        "p": 0.0078125,
+        "mean_diff": 0.044185871073517805,
+        "p_holm": 0.0546875
+      },
+      {
+        "vs": "B2 Random forest",
+        "p": 0.00390625,
+        "mean_diff": 0.04043795142834299,
+        "p_holm": 0.03515625
+      },
+      {
+        "vs": "B3 LightGBM (static)",
+        "p": 0.02734375,
+        "mean_diff": 0.034100702635564493,
+        "p_holm": 0.1640625
+      },
+      {
+        "vs": "B3p LightGBM (pooled snapshots)",
+        "p": 0.1640625,
+        "mean_diff": 0.013803110758847832,
+        "p_holm": 0.38671875
+      },
+      {
+        "vs": "B4 Cluster label + LightGBM",
+        "p": 0.0546875,
+        "mean_diff": 0.03245817259278464,
+        "p_holm": 0.2734375
+      },
+      {
+        "vs": "B6 Cox time-varying",
+        "p": 0.00390625,
+        "mean_diff": 0.04582400540895898,
+        "p_holm": 0.03515625
+      },
+      {
+        "vs": "B8 Hazard GBDT (no segments)",
+        "p": 0.5703125,
+        "mean_diff": -0.011859919388387048,
+        "p_holm": 0.5703125
+      },
+      {
+        "vs": "B9 Hazard + trajectory (no segments)",
+        "p": 0.12890625,
+        "mean_diff": 0.013087336126890108,
+        "p_holm": 0.38671875
+      },
+      {
+        "vs": "SMH-Churn+ (trajectory + migration)",
+        "p": 0.07421875,
+        "mean_diff": 0.013931842654445895,
+        "p_holm": 0.296875
+      }
+    ],
+    "bootstrap": {
+      "B3p LightGBM (pooled snapshots)": {
+        "mean": 0.003223585614357703,
+        "ci95": [
+          -0.007498716896837283,
+          0.015055019465587785
+        ],
+        "excludes_zero": false,
+        "n_boot": 500
+      },
+      "B8 Hazard GBDT (no segments)": {
+        "mean": -0.011739110289381094,
+        "ci95": [
+          -0.02581493309198117,
+          0.001821537216317584
+        ],
+        "excludes_zero": false,
+        "n_boot": 500
+      },
+      "B9 Hazard + trajectory (no segments)": {
+        "mean": 0.006756632082007702,
+        "ci95": [
+          -0.0031105611935254036,
+          0.018720327913097596
+        ],
+        "excludes_zero": false,
+        "n_boot": 500
+      }
+    },
+    "pairs": [
+      {
+        "a": "B9 Hazard + trajectory (no segments)",
+        "b": "B8 Hazard GBDT (no segments)",
+        "mean_diff": -0.024947255515277156,
+        "wins": 2,
+        "n_folds": 9,
+        "p_wilcoxon": 0.07421875,
+        "bootstrap": {
+          "mean": -0.018495742371388794,
+          "ci95": [
+            -0.034650953434695,
+            -0.005997668423928545
+          ],
+          "excludes_zero": true,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "B9 Hazard + trajectory (no segments)",
+        "mean_diff": -0.000844506527555794,
+        "wins": 4,
+        "n_folds": 9,
+        "p_wilcoxon": 0.65234375,
+        "bootstrap": {
+          "mean": 0.0011552911484618235,
+          "ci95": [
+            -0.007243800244613177,
+            0.01167223175597164
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "SMH-Churn",
+        "mean_diff": -0.013931842654445895,
+        "wins": 1,
+        "n_folds": 9,
+        "p_wilcoxon": 0.07421875,
+        "bootstrap": {
+          "mean": -0.0056013409335458775,
+          "ci95": [
+            -0.01668438038942575,
+            0.005173326843973839
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "B3p LightGBM (pooled snapshots)",
+        "mean_diff": -0.00012873189559806715,
+        "wins": 5,
+        "n_folds": 9,
+        "p_wilcoxon": 1.0,
+        "bootstrap": {
+          "mean": -0.002377755319188175,
+          "ci95": [
+            -0.015031249714780058,
+            0.01036013860107704
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "B3 LightGBM (static)",
+        "mean_diff": 0.020168859981118597,
+        "wins": 7,
+        "n_folds": 9,
+        "p_wilcoxon": 0.12890625,
+        "bootstrap": {
+          "mean": 0.01214016930195978,
+          "ci95": [
+            -0.004679239194194076,
+            0.029686246247448988
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      }
+    ]
+  },
+  "silhouette": 0.245726092334155
+}

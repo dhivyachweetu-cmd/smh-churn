@@ -1,0 +1,247 @@
+{
+  "dataset": "D1_v4",
+  "cfg": {
+    "H": 90,
+    "delta": 15,
+    "K": 4,
+    "L": 3,
+    "min_history_days": 120,
+    "n_valid": 3,
+    "n_test": 3,
+    "min_train": 6,
+    "fold_step": 2,
+    "seed": 42,
+    "margin": 0.2,
+    "gamma": 0.3,
+    "cost": 1.0,
+    "budgets": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "prior_alpha": 50.0,
+    "max_cox_rows": 150000,
+    "n_estimators": 400,
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "tune_trials": 15,
+    "gmm_variant": true,
+    "calibration": "platt",
+    "full_history_lag": true
+  },
+  "stats": {
+    "customers": 5878,
+    "transactions": 805549,
+    "orders": 36969,
+    "first": "2009-12-01",
+    "last": "2011-12-09",
+    "origins": 36,
+    "rows": 30906,
+    "churn_rate_rows": 0.15039150973920923,
+    "gap_p50": 24.0,
+    "gap_p90": 134.0,
+    "gap_p95": 206.0
+  },
+  "explain": {
+    "top3": {
+      "0": "recency, seg, period",
+      "1": "recency, frequency, vol",
+      "2": "recency, frequency, period",
+      "3": "recency, frequency, seg"
+    },
+    "stability_mean": 0.9901960784313726,
+    "stability_min": 0.9628482972136224
+  },
+  "tests": {
+    "friedman": {
+      "chi2": 42.45974025974027,
+      "p": 2.7078412857311405e-06,
+      "df": 9,
+      "mean_ranks": {
+        "SMH-Churn+ (trajectory + migration)": 2.71,
+        "SMH-Churn": 2.71,
+        "B9 Hazard + trajectory (no segments)": 3.29,
+        "B3 LightGBM (static)": 4.43,
+        "B8 Hazard GBDT (no segments)": 4.86,
+        "B4 Cluster label + LightGBM": 5.29,
+        "B2 Random forest": 6.14,
+        "B3p LightGBM (pooled snapshots)": 6.57,
+        "B6 Cox time-varying": 9.43,
+        "B1 Logistic regression": 9.57
+      }
+    },
+    "wilcoxon": [
+      {
+        "vs": "B1 Logistic regression",
+        "p": 0.015625,
+        "mean_diff": 0.1173935808444118,
+        "p_holm": 0.140625
+      },
+      {
+        "vs": "B2 Random forest",
+        "p": 0.015625,
+        "mean_diff": 0.032180529513006824,
+        "p_holm": 0.140625
+      },
+      {
+        "vs": "B3 LightGBM (static)",
+        "p": 0.296875,
+        "mean_diff": 0.011985371584591136,
+        "p_holm": 0.890625
+      },
+      {
+        "vs": "B3p LightGBM (pooled snapshots)",
+        "p": 0.03125,
+        "mean_diff": 0.02907270621756198,
+        "p_holm": 0.15625
+      },
+      {
+        "vs": "B4 Cluster label + LightGBM",
+        "p": 0.109375,
+        "mean_diff": 0.018817303278867065,
+        "p_holm": 0.4375
+      },
+      {
+        "vs": "B6 Cox time-varying",
+        "p": 0.015625,
+        "mean_diff": 0.10831906687067962,
+        "p_holm": 0.140625
+      },
+      {
+        "vs": "B8 Hazard GBDT (no segments)",
+        "p": 0.015625,
+        "mean_diff": 0.010149561965704998,
+        "p_holm": 0.140625
+      },
+      {
+        "vs": "B9 Hazard + trajectory (no segments)",
+        "p": 0.8125,
+        "mean_diff": -0.00030430823310498685,
+        "p_holm": 1.0
+      },
+      {
+        "vs": "SMH-Churn+ (trajectory + migration)",
+        "p": 0.9375,
+        "mean_diff": -0.0002874294818169413,
+        "p_holm": 1.0
+      }
+    ],
+    "bootstrap": {
+      "B3p LightGBM (pooled snapshots)": {
+        "mean": 0.031824837273047926,
+        "ci95": [
+          0.02293224111137817,
+          0.04136567443962962
+        ],
+        "excludes_zero": true,
+        "n_boot": 500
+      },
+      "B8 Hazard GBDT (no segments)": {
+        "mean": 0.007639431773564198,
+        "ci95": [
+          -0.0007201990447831595,
+          0.015709288539463403
+        ],
+        "excludes_zero": false,
+        "n_boot": 500
+      },
+      "B9 Hazard + trajectory (no segments)": {
+        "mean": 0.00246553568764683,
+        "ci95": [
+          -0.004739644367420078,
+          0.009079862729083971
+        ],
+        "excludes_zero": false,
+        "n_boot": 500
+      }
+    },
+    "pairs": [
+      {
+        "a": "B9 Hazard + trajectory (no segments)",
+        "b": "B8 Hazard GBDT (no segments)",
+        "mean_diff": 0.010453870198809985,
+        "wins": 6,
+        "n_folds": 7,
+        "p_wilcoxon": 0.03125,
+        "bootstrap": {
+          "mean": 0.005173896085917369,
+          "ci95": [
+            -0.002059041505299589,
+            0.013092581308575843
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "B9 Hazard + trajectory (no segments)",
+        "mean_diff": -1.6878751288045596e-05,
+        "wins": 5,
+        "n_folds": 7,
+        "p_wilcoxon": 0.46875,
+        "bootstrap": {
+          "mean": 0.0032327199669716583,
+          "ci95": [
+            -0.0023800995644263105,
+            0.008410475886044278
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "SMH-Churn",
+        "mean_diff": 0.0002874294818169413,
+        "wins": 3,
+        "n_folds": 7,
+        "p_wilcoxon": 0.9375,
+        "bootstrap": {
+          "mean": 0.0007671842793248282,
+          "ci95": [
+            -0.005330244565312894,
+            0.00672737183357496
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "B3p LightGBM (pooled snapshots)",
+        "mean_diff": 0.029360135699378922,
+        "wins": 6,
+        "n_folds": 7,
+        "p_wilcoxon": 0.03125,
+        "bootstrap": {
+          "mean": 0.03259202155237276,
+          "ci95": [
+            0.023669015206748727,
+            0.042226952333697707
+          ],
+          "excludes_zero": true,
+          "n_boot": 500
+        }
+      },
+      {
+        "a": "SMH-Churn+ (trajectory + migration)",
+        "b": "B3 LightGBM (static)",
+        "mean_diff": 0.012272801066408077,
+        "wins": 5,
+        "n_folds": 7,
+        "p_wilcoxon": 0.296875,
+        "bootstrap": {
+          "mean": 0.012902876052864103,
+          "ci95": [
+            -0.00043879927231196483,
+            0.026278518606902702
+          ],
+          "excludes_zero": false,
+          "n_boot": 500
+        }
+      }
+    ]
+  },
+  "silhouette": 0.264084920970609
+}
